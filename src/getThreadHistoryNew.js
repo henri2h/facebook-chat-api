@@ -614,14 +614,16 @@ module.exports = function(defaultFuncs, api, ctx) {
       "av": ctx.globalOptions.pageID,
       queries: JSON.stringify({
         o0: {
-          // This doc_id was valid on February 2nd 2017.
-          doc_id: "1498317363570230",
+          // This doc_id was valid on April 10 2020.
+          doc_id: "3953058261433778",
           query_params: {
             id: threadID,
             message_limit: amount,
             load_messages: 1,
-            load_read_receipts: false,
-            before: timestamp
+            load_read_receipts: true,
+            load_delivery_reciepts:true,
+            before: timestamp,
+            is_work_teamwork_not_putting_muted_in_unreads:false // wow, what's going on here ?
           }
         }
       })
