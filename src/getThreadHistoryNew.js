@@ -575,8 +575,26 @@ function formatMessagesGraphQLResponse(data) {
         return { error: "Don't know about message type " + d.__typename };
     }
   });
+  var readReceipts = messageThread.read_receipts.nodes.map(function(d){
+    return {
+      id: d.actor.id,
 
-  return messages;
+      // unknown parameters...
+      action: d.action,
+      watermark: d.watermark
+    };
+  });
+  var deliveryReceipts = messageThread.delivery_receipts.nodes.map(function(d){
+    return{
+      timestamp: d.timestamp_precise
+    };
+  });
+
+  return {
+    messages:messages,
+    readReceipts:readReceipts,
+    deliveryReceipts:deliveryReceipts
+  };
 }
 
 module.exports = function(defaultFuncs, api, ctx) {
