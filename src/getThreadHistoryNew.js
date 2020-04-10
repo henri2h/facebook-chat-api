@@ -621,7 +621,7 @@ module.exports = function(defaultFuncs, api, ctx) {
             message_limit: amount,
             load_messages: 1,
             load_read_receipts: true,
-            load_delivery_reciepts:true,
+            load_delivery_receipts:true,
             before: timestamp,
             is_work_teamwork_not_putting_muted_in_unreads:false // wow, what's going on here ?
           }
